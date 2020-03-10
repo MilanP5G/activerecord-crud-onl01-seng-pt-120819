@@ -12,7 +12,6 @@ def can_be_instantiated_and_then_saved
 end
 
 def can_be_created_with_a_hash_of_attributes
-  # Initialize movie and then and save it
   attributes = {
       title: "The Sting",
       release_date: 1973,
@@ -25,10 +24,6 @@ def can_be_created_with_a_hash_of_attributes
 end
 
 def can_be_created_in_a_block(args = {title: "Home Alone", release_date: 1990})
-  # If no arguments are passed, use default values:
-  # title == "Home Alone"
-  # release_date == 1990
-  
   Movie.create do |m|
     m.assign_attributes(args)
   end
@@ -51,21 +46,14 @@ def can_find_the_first_item_from_the_database_using_id
 end
 
 def can_find_by_multiple_attributes
-  # Search Values:
-  # title == "Title"
-  # release_date == 2000
-  # director == "Me"
   Movie.where(title:"Title", release_date:2000, director:"Me").take
 end
 
 def can_find_using_where_clause_and_be_sorted
-  # For this test return all movies released after 2002 and ordered by 
-  # release date descending
   Movie.where('release_date > 2002').order(release_date: :desc)
 end
 
 def can_be_found_updated_and_saved
-  # Updtate the title "Awesome Flick" to "Even Awesomer Flick", save it, then return it
   Movie.create(title: "Awesome Flick")
   movie = Movie.find_by(title: "Awesome Flick")
   movie.title = "Even Awesomer Flick"
@@ -73,7 +61,6 @@ def can_be_found_updated_and_saved
 end
 
 def can_update_using_update_method
-  # Update movie title to "Wat, huh?"
   Movie.create(title: "Wat?")
   Movie.update(title: "Wat?, huh?")
 end
